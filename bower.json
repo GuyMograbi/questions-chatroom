@@ -1,0 +1,33 @@
+{
+  "name": "questions-chatroom",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "guy mograbi <guy.mograbi@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/GuyMograbi/questions-chatroom",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.1",
+    "surface": "mildrenben/surface",
+    "components-font-awesome": "~4.5.0",
+    "ngenter": "guymograbi/ng-enter",
+    "angular-moment": "~0.10.3",
+    "moment": "~2.12.0",
+    "lodash": "~4.6.1",
+    "angular-mocks": "~1.5.2"
+  },
+  "resolutions": {
+    "surface": "9f04ad744c",
+    "angular": "~1.5.1",
+    "moment": "~2.12.0"
+  }
+}

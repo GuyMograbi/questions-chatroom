@@ -1,0 +1,66 @@
+<html ng-app="chatroom">
+    <head>
+        <title>Chat</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="https://www.forter.com/wp-content/uploads/2015/07/Favicon.png">
+        <link rel="stylesheet" href="style/main.css"/>
+        <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css"/>
+    </head>
+    <body ng-controller="ChatroomCtrl">
+    <main class="g--12 g-m--12 no-margin-vertical">
+        <header class="container bg--red no-margin-vertical">
+            <h1 class="m--1 g--4 g-s--12 no-margin-vertical">Hello {{username}}</h1>
+        </header>
+
+        <div class="content">
+            <div class="messages g--10 m--1">
+                <div class="message tile" ng-repeat="m in messages" >
+                    <div class="question">
+                        <div class="g--8 no-pad no-margin inline-block">{{m.username}} : {{m.content}}</div>
+                        <span am-time-ago="m.timestamp" class="right color--gun-metal"></span>
+                    </div>
+                    <div ng-repeat="answer in m.answers">
+                        <div class="g--8 no-pad no-margin inline-block">{{answer.username}} : {{answer.content}}</div>
+                        <span am-time-ago="answer.timestamp" class="right color--gun-metal"></span>
+                    </div>
+                    <div class="container">
+                        <input type="text" required class="wide-input" ng-enter="sendAnswer(m)" placeholder="write an answer" ng-model="m.answer"/>
+                        <button class="btn--float bg--red color--white right"  ng-click="sendAnswer(m)"><i class="fa fa-paper-plane"></i></button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+      <!--  <div>
+            <button class="btn--flat">Flat</button>
+            <button class="btn--float">+</button>
+            <button class="btn--raised">Raised</button>
+
+            <button class="btn--raised btn--green">Green</button>
+            <button class="btn--raised btn--blue">Blue</button>
+            <button class="btn--raised btn--accent">Accent</button>
+        </div>-->
+
+        <div class="footer bg--clouds ">
+            <div class="g--10 m--1 ">
+                <input type="text" class="bg--red wide-input" placeholder="ask a question" required ng-enter="sendQuestion()" ng-model="myMessage"/>
+                <button class="btn--float bg--red color--white right" ng-click="sendQuestion()"><i class="fa fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </main>
+    <!-- scripts -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/ngenter/ngenter.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="app/scripts/app.js"></script>
+    <script src="app/scripts/controllers/ChatroomCtrl.js"></script>
+    <script src="app/scripts/services/ChatroomService.js"></script>
+
+
+    <!-- scripts : END -->
+    </body>
+</html>

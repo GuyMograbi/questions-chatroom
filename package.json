@@ -1,0 +1,65 @@
+{
+  "name": "questions-chatroom",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "export AUTO_OPEN=true && node server.js",
+    "develop": " ( node open-chatroom.js & )  &&  ./node_modules/.bin/nodemon -w backend server.js ",
+    "test": "./node_modules/.bin/xo && npm run mocha_unit && npm run karma_unit",
+    "mocha_develop": "export NODE_PATH=backend && ./node_modules/.bin/mocha",
+    "mocha_unit": "export NODE_PATH=instrumented_backend && npm run test_instrument && ./node_modules/.bin/mocha --reporter mocha-istanbul",
+    "karma_unit": "./node_modules/.bin/karma start",
+    "build_css": "./node_modules/.bin/node-sass --include-path scss app/style/main.scss dist/style/main.css",
+    "watch_css": "./node_modules/.bin/nodemon -e scss -x \"npm run build_css\"",
+    "test_instrument": " ./node_modules/.bin/istanbul  instrument backend -o instrumented_backend"
+  },
+  "dependencies": {
+    "body-parser": "~1.10.1",
+    "cosine": "0.0.1",
+    "express": "~4.11.0",
+    "fs-extra": "^0.26.7",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-coverage": "^0.5.5",
+    "karma-failed-reporter": "0.0.3",
+    "karma-jasmine": "^0.3.8",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-spec-reporter": "0.0.24",
+    "lodash": "^4.6.1",
+    "log4js": "^0.6.33",
+    "node-uuid": "^1.4.7",
+    "open": "0.0.5",
+    "phantomjs-prebuilt": "^2.1.6",
+    "server-sent-events": "0.0.4",
+    "turbo-pancake": "0.0.2"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5",
+    "mocha-istanbul": "^0.2.0",
+    "node-sass": "^3.4.2",
+    "nodemon": "^1.9.1",
+    "xo": "^0.13.0"
+  },
+  "xo": {
+    "space": 4,
+    "globals": [
+      "angular",
+      "describe",
+      "it",
+      "EventSource",
+      "_",
+      "localStorage",
+      "beforeEach",
+      "inject"
+    ],
+    "ignores": [
+      "dev/**",
+      "html-report/**",
+      "instrumented_backend/**",
+      "karma.conf.js"
+    ]
+  }
+}
